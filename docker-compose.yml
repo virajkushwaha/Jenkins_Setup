@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build:
+      context: .
+      #This file is created by Viraj Kushwaha
+      # If you want to change the endpoints we fetch certs from:
+      # args:
+      #   CERT_HOSTS: "mirror.bom2.albony.in:443 mirror.del.albony.in:443"
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"   # inbound agents (useful later)
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
+
